@@ -24,7 +24,7 @@ else
 	SRCPREFIX:=nosdk8266/
 endif
 
-LDFLAGS:=-T $(SRCPREFIX)ld/linkerscript.ld -T $(SRCPREFIX)ld/addresses.ld
+EXTRA_LDFLAGS:=-T $(SRCPREFIX)ld/linkerscript.ld -T $(SRCPREFIX)ld/addresses.ld
 FOLDERPREFIX:=$(GCC_FOLDER)/bin
 PORT:=COM5
 
@@ -33,7 +33,7 @@ CFLAGS:=$(CFLAGS) -Ofast -I$(SRCPREFIX)include -DMAIN_MHZ=$(MAIN_MHZ) -mno-seria
 SRCS:=$(SRCS) $(SRCPREFIX)src/delay.S $(SRCPREFIX)src/nosdk8266.c
 
 $(TARGET_OUT) : $(SRCS)
-	$(GCC) $(CFLAGS) $(SRCS) $(LDFLAGS) -o $@
+	$(GCC) $(CFLAGS) $(SRCS) $(EXTRA_LDFLAGS) -o $@
 	nm -S -n $(TARGET_OUT) > image.map
 	$(SIZE) $@
 	$(PREFIX)objdump -S $@ > image.lst
