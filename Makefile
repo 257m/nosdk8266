@@ -24,7 +24,7 @@ else
 	SRCPREFIX:=nosdk8266/
 endif
 
-EXTRA_LDFLAGS:=-T $(SRCPREFIX)ld/linkerscript.ld -T $(SRCPREFIX)ld/addresses.ld
+EXTRA_LDFLAGS:=-T $(SRCPREFIX)ld/linkerscript.ld -T $(SRCPREFIX)ld/addresses.ld -nostdlib
 FOLDERPREFIX:=$(GCC_FOLDER)/bin
 PORT:=COM5
 
