@@ -34,7 +34,6 @@ SRCS:=$(SRCS) $(SRCPREFIX)src/delay.S $(SRCPREFIX)src/nosdk8266.c
 
 $(TARGET_OUT) : $(SRCS)
 	$(GCC) $(CFLAGS) $(SRCS) $(EXTRA_LDFLAGS) -o $@
-	# nm -S -n $(TARGET_OUT) > image.map
 	$(SIZE) $@
 	$(PREFIX)objdump -S $@ > image.lst
 	PATH=$(FOLDERPREFIX):$$PATH;$(ESPTOOL) elf2image $(TARGET_OUT) -o $(TARGET_OUT)-0x00000.bin
