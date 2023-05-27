@@ -8,8 +8,8 @@ SUBMODULE?=NO
 #Peripheral clocks of >115 will NOT boot without a full power-down and up. (Don't know why).  * = peripheral clock at processor clock.
 MAIN_MHZ?=346
 
-ESPTOOL:=~/esp/ESP8266_RTOS_SDK/components/esptool_py/esptool/esptool.py
-GCC_FOLDER:=~/esp/xtensa-lx106-elf
+ESPTOOL:=C:\Users\alim2790\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.0.0\tools\esptool\esptool.py
+GCC_FOLDER:=C:\\Users\\alim2790\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\xtensa-lx106-elf-gcc\\3.0.0-newlib4.0.0-gnu23-48f7b08
 PREFIX:=$(GCC_FOLDER)/bin/xtensa-lx106-elf-
 SIZE:=$(PREFIX)size
 GCC:=$(PREFIX)gcc
@@ -26,7 +26,7 @@ endif
 
 LDFLAGS:=-T $(SRCPREFIX)ld/linkerscript.ld -T $(SRCPREFIX)ld/addresses.ld
 FOLDERPREFIX:=$(GCC_FOLDER)/bin
-PORT:=/dev/ttyS12
+PORT:=COM5
 
 #Adding the -g flag makes our assembly easier to read and does not increase size of final executable.
 CFLAGS:=$(CFLAGS) -Ofast -I$(SRCPREFIX)include -DMAIN_MHZ=$(MAIN_MHZ) -mno-serialize-volatile -mlongcalls -g
